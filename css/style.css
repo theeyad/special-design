@@ -1,0 +1,116 @@
+/* Start pre-design */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #f00f70;
+  --main-trans: 0.3s;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.agency-name {
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+/* End pre-design */
+
+/* Start Landing Page */
+.landing {
+  min-height: 100vh;
+  background-image: url(../images/landing-img_0.jpg);
+  background-size: cover;
+  position: relative;
+  transition: 0.5s;
+}
+
+.landing .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 70%);
+  z-index: 1;
+}
+
+.landing .header {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.landing .header .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.landing .header .navs {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.landing .header .navs a {
+  text-decoration: none;
+  font-size: 1.15rem;
+  color: inherit;
+  margin-left: 20px;
+  letter-spacing: 1px;
+}
+
+.landing .header .navs a li {
+  list-style: none;
+  transition: var(--main-trans);
+  -webkit-transition: var(--main-trans);
+  -moz-transition: var(--main-trans);
+  -ms-transition: var(--main-trans);
+  -o-transition: var(--main-trans);
+}
+
+.landing .header .navs a li.active {
+  color: var(--main-color);
+}
+
+.landing .header .navs a li:hover {
+  color: var(--main-color);
+}
+
+.landing .introduction-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: white;
+  padding-left: 1em;
+}
+
+.landing .introduction-text h1 {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.landing .introduction-text h1 .colored {
+  color: var(--main-color);
+}
+
+.landing .introduction-text .desc {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+/* End Landing Page */
