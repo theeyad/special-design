@@ -20,3 +20,21 @@ setInterval(() => {
 }, 5000);
 
 // End Making Landing Page BackgroundImage Change Every Five Seconds
+
+// Start Settings Box
+let settingBox = document.querySelector(".setting-box");
+let settingToggle = document.querySelector(".toggle-setting");
+let settingToggleIcon = document.querySelector(".toggle-setting .gear");
+
+settingToggle.addEventListener("click", function (e) {
+  // opens/colses settings box and spin/unspin gear icon
+  if (settingBox.classList.contains("open")) {
+    settingBox.classList.remove("open");
+    settingToggleIcon.classList.remove("fa-spin");
+  } else {
+    settingBox.classList.add("open");
+    settingToggleIcon.classList.add("fa-spin");
+  }
+});
+
+// End Settings Box

@@ -25,6 +25,39 @@ body {
 }
 /* End pre-design */
 
+/* Start Settings Box */
+.setting-box {
+  position: fixed;
+  top: 0;
+  left: -200px;
+  background-color: white;
+  min-height: 100vh;
+  width: 200px;
+  z-index: 9999;
+  transition: var(--main-trans);
+}
+
+.setting-box.open {
+  left: 0;
+}
+
+.setting-box .toggle-setting {
+  position: absolute;
+  right: -30px;
+  top: 20%;
+  transform: translateY(-20%);
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* End Settings Box */
+
 /* Start Landing Page */
 .landing {
   min-height: 100vh;

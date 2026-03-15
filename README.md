@@ -1,3 +1,3 @@
 # special-design
 
-HTML, CSS, JS Design
+HTML, CSS, JS Design.
