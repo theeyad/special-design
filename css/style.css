@@ -56,6 +56,60 @@ body {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.setting-box .options {
+  padding: 1em;
+}
+
+.setting-box .options h4 {
+  font-size: 1.35rem;
+}
+
+.setting-box .options .colors {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  margin-top: 0.75em;
+  padding-left: 0.5em;
+}
+
+.setting-box .options .colors li {
+  list-style: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.setting-box .options .colors li:hover {
+  border: 2px solid black;
+}
+
+.setting-box .options .colors li.active {
+  border: 2px solid black;
+}
+
+.setting-box .options .colors li:first-child {
+    background-color: #f00f70;
+}
+
+.setting-box .options .colors li:nth-child(2) {
+    background-color: #F2B50B;
+}
+
+.setting-box .options .colors li:nth-child(3) {
+    background-color: #9CD5FF;
+}
+
+.setting-box .options .colors li:nth-child(4) {
+    background-color: #AEB784;
+}
+
+.setting-box .options .colors li:nth-child(5) {
+    background-color: #91d06cbf;
+}
+
 /* End Settings Box */
 
 /* Start Landing Page */

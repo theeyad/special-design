@@ -1,5 +1,4 @@
 // Start Making Landing Page BackgroundImage Change Every Five Seconds
-
 let landingPage = document.querySelector(".landing");
 
 let imgsArr = [
@@ -16,9 +15,8 @@ let landingNum = 0;
 
 setInterval(() => {
   landingNum >= imgsArr.length - 1 ? (landingNum = 0) : landingNum++;
-  landingPage.style.backgroundImage = `url(../images/landing-img_${landingNum}.jpg)`;
+  landingPage.style.backgroundImage = `url(./images/landing-img_${landingNum}.jpg)`;
 }, 5000);
-
 // End Making Landing Page BackgroundImage Change Every Five Seconds
 
 // Start Settings Box
@@ -26,15 +24,34 @@ let settingBox = document.querySelector(".setting-box");
 let settingToggle = document.querySelector(".toggle-setting");
 let settingToggleIcon = document.querySelector(".toggle-setting .gear");
 
+//// opens/colses settings box and spin/unspin gear icon when clicking on gear icon
 settingToggle.addEventListener("click", function (e) {
-  // opens/colses settings box and spin/unspin gear icon
-  if (settingBox.classList.contains("open")) {
+  settingBox.classList.toggle("open");
+  settingToggleIcon.classList.toggle("fa-spin");
+});
+
+//// opens/colses settings box and spin/unspin gear icon when clicking outside the settings box
+document.addEventListener("click", function (e) {
+  if (!settingBox.contains(e.target)) {
     settingBox.classList.remove("open");
     settingToggleIcon.classList.remove("fa-spin");
-  } else {
-    settingBox.classList.add("open");
-    settingToggleIcon.classList.add("fa-spin");
   }
 });
 
+//// active/unactive lis and setting color theme
+const colorsLi = document.querySelectorAll(".colors li");
+colorsLi.forEach((li) => {
+  li.addEventListener("click", function (e) {
+    colorsLi.forEach((li) => {
+      li.classList.remove("active");
+    });
+
+    e.target.classList.add("active");
+
+    document.documentElement.style.setProperty(
+      "--main-color",
+      `${e.target.dataset.color}`,
+    );
+  });
+});
 // End Settings Box
