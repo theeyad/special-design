@@ -1,13 +1,17 @@
 /* Start pre-design */
+:root {
+  --main-color: #f00f70;
+  --main-trans: 0.3s;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --main-color: #f00f70;
-  --main-trans: 0.3s;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -18,10 +22,51 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+.container {
+  max-width: 2000px;
+  padding: 0 2em;
+  margin: 0 auto;
+}
+
+.container:has(> section) {
+  background-image:
+    linear-gradient(rgba(94, 0, 6, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 15, 6, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
 .agency-name {
   font-family: "Share Tech Mono", monospace;
   font-weight: 400;
   font-style: normal;
+}
+
+section {
+  padding: 4em 0;
+}
+
+.scroll-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: -70px;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 9999;
+  cursor: pointer;
+  transition: var(--main-trans);
+}
+
+.scroll-top.appear {
+  right: 20px;
+}
+
+.scroll-top i {
+  color: var(--main-color);
 }
 /* End pre-design */
 
@@ -29,10 +74,10 @@ body {
 .setting-box {
   position: fixed;
   top: 0;
-  left: -200px;
+  left: -250px;
   background-color: white;
   min-height: 100vh;
-  width: 200px;
+  width: 250px;
   z-index: 9999;
   transition: var(--main-trans);
 }
@@ -58,23 +103,30 @@ body {
 }
 
 .setting-box .options {
-  padding: 1em;
+  padding: 10px;
 }
 
-.setting-box .options h4 {
-  font-size: 1.35rem;
+.setting-box .options > div {
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 8px;
+  text-align: center;
 }
 
-.setting-box .options .colors {
+.setting-box .options > div h4 {
+  font-size: 1.2rem;
+}
+
+.setting-box .colors-options .colors {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.5em;
   flex-wrap: wrap;
   margin-top: 0.75em;
-  padding-left: 0.5em;
 }
 
-.setting-box .options .colors li {
+.setting-box .colors-options .colors li {
   list-style: none;
   width: 25px;
   height: 25px;
@@ -82,37 +134,62 @@ body {
   cursor: pointer;
 }
 
-.setting-box .options .colors li:hover {
+.setting-box .colors-options .colors li:hover {
   border: 2px solid black;
 }
 
-.setting-box .options .colors li.active {
+.setting-box .colors-options .colors li.active {
   border: 2px solid black;
 }
 
-.setting-box .options .colors li:first-child {
-    background-color: #f00f70;
+.setting-box .colors-options .colors li:first-child {
+  background-color: #f00f70;
 }
 
-.setting-box .options .colors li:nth-child(2) {
-    background-color: #F2B50B;
+.setting-box .colors-options .colors li:nth-child(2) {
+  background-color: #f2b50b;
 }
 
-.setting-box .options .colors li:nth-child(3) {
-    background-color: #9CD5FF;
+.setting-box .colors-options .colors li:nth-child(3) {
+  background-color: #9cd5ff;
 }
 
-.setting-box .options .colors li:nth-child(4) {
-    background-color: #AEB784;
+.setting-box .colors-options .colors li:nth-child(4) {
+  background-color: #aeb784;
 }
 
-.setting-box .options .colors li:nth-child(5) {
-    background-color: #91d06cbf;
+.setting-box .colors-options .colors li:nth-child(5) {
+  background-color: #91d06cbf;
 }
 
+.setting-box .bg-options {
+  margin-top: 10px;
+}
+
+.setting-box .bg-options .random-bg-btns {
+  margin-top: 0.75em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.setting-box .random-bg-btns span {
+  background-color: rgb(38 166 154 / 60%);
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: var(--main-trans);
+}
+
+.setting-box .bg-options .random-bg-btns span:hover,
+.setting-box .bg-options .random-bg-btns span.active {
+  background-color: rgb(38 166 154 / 100%);
+}
 /* End Settings Box */
 
-/* Start Landing Page */
+/* Start Landing Section */
 .landing {
   min-height: 100vh;
   background-image: url(../images/landing-img_0.jpg);
@@ -134,7 +211,7 @@ body {
 .landing .header {
   display: flex;
   align-items: center;
-  padding: 1em;
+  padding: 1em 0;
   position: relative;
   z-index: 2;
   color: white;
@@ -149,7 +226,6 @@ body {
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  padding-right: 30px;
 }
 
 .landing .header .navs a {
@@ -183,7 +259,6 @@ body {
   transform: translateY(-50%);
   z-index: 2;
   color: white;
-  padding-left: 1em;
 }
 
 .landing .introduction-text h1 {
@@ -200,4 +275,105 @@ body {
   font-size: 1.5rem;
   letter-spacing: 1px;
 }
-/* End Landing Page */
+/* End Landing Section */
+
+/* Start About Section */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about .text-content {
+  max-width: 800px;
+}
+
+.about .text-content h2 {
+  font-size: 4rem;
+  color: var(--main-color);
+}
+
+.about .text-content .desc {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-top: 1em;
+}
+
+.about .img-container {
+  width: 350px;
+  height: 350px;
+  background-color: rgb(0 0 0 / 30%);
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about .img-container::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-color);
+  z-index: -1;
+  transition: var(--main-trans);
+}
+
+.about .img-container:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.about .img-container img {
+  width: 100%;
+  height: 100%;
+}
+/* End About Section */
+
+/* Start Our Skills */
+.content h2 {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--main-color);
+}
+
+.content .progress-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-top: 2em;
+  border-radius: 5px;
+}
+
+.content .progress-container .progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content .progress .progress-name {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.content .progress .progress-percent {
+  width: 90%;
+  height: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.content .progress .progress-percent span {
+  display: block;
+  height: 100%;
+  background-color: var(--main-color);
+}
+/* End Our Skills */

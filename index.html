@@ -23,52 +23,113 @@
 </head>
 
 <body>
+    <!-- Start Scroll To Top -->
+    <div class="scroll-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+    <!-- End Scroll To Top -->
+
     <!-- Start Settings Box -->
     <div class="setting-box">
         <div class="toggle-setting">
             <i class="fa-solid fa-gear gear"></i>
         </div>
         <div class="options">
-            <h4>colors</h4>
-            <ul class="colors">
-                <li class="active" data-color="#f00f70"></li>
-                <li data-color="#F2B50B"></li>
-                <li data-color="#9CD5FF"></li>
-                <li data-color="#AEB784"></li>
-                <li data-color="#91d06cbf"></li>
-            </ul>
+            <div class="colors-options">
+                <h4>colors</h4>
+                <ul class="colors">
+                    <li class="active" data-color="#f00f70"></li>
+                    <li data-color="#F2B50B"></li>
+                    <li data-color="#9CD5FF"></li>
+                    <li data-color="#AEB784"></li>
+                    <li data-color="#91d06cbf"></li>
+                </ul>
+            </div>
+            <div class="bg-options">
+                <h4>Background Options</h4>
+                <div class="random-bg-btns">
+                    <span class="apply active" data-random-bgs="apply">Apply</span>
+                    <span class="stop" data-random-bgs="stop">Stop</span>
+                </div>
+            </div>
         </div>
     </div>
     <!-- End Settings Box -->
 
     <!-- Start Landing Section -->
-    <section class="landing">
+    <div class="landing">
         <div class="overlay"></div>
-        <header class="header">
-            <div class="logo">
-                <span class="agency-name">Special Design</span>
+        <div class="container">
+            <header class="header">
+                <div class="logo">
+                    <span class="agency-name">Special Design</span>
+                </div>
+                <ul class="navs">
+                    <a href="#about">
+                        <li>About</li>
+                    </a>
+                    <a href="">
+                        <li>Services</li>
+                    </a>
+                    <a href="">
+                        <li>Products</li>
+                    </a>
+                    <a href="">
+                        <li>Contact</li>
+                    </a>
+                </ul>
+            </header>
+            <div class="introduction-text">
+                <h1>We Are <span class="agency-name colored">Special</span></h1>
+                <p class="desc">All Your Favourites, One Place, Designed By You.</p>
             </div>
-            <ul class="navs">
-                <a href="">
-                    <li class="active">About</li>
-                </a>
-                <a href="">
-                    <li>Services</li>
-                </a>
-                <a href="">
-                    <li>Products</li>
-                </a>
-                <a href="">
-                    <li>Contact</li>
-                </a>
-            </ul>
-        </header>
-        <div class="introduction-text">
-            <h1>We Are <span class="agency-name colored">Special</span></h1>
-            <p class="desc">All Your Favourites, One Place, Designed By You.</p>
         </div>
-    </section>
+    </div>
     <!-- End Landing Section -->
+
+    <!-- Start About Section -->
+    <div class="container">
+        <section id="about" class="about">
+            <div class="text-content">
+                <h2>About Us</h2>
+                <p class="desc">We believe entertainment should feel personal. That's why we built a place where all
+                    your favourites live together — films, games, and more —
+                    shaped by you, for you. Welcome home.</p>
+            </div>
+            <div class="img-container">
+                <img src="./images/about-img.png" alt="About Section Img">
+            </div>
+        </section>
+    </div>
+    <!-- End About Section -->
+
+    <!-- Start Our Skills -->
+    <div class="container">
+        <section id="content" class="content">
+            <h2>Content</h2>
+            <div class="progress-container">
+                <div class="progress">
+                    <p class="progress-name">Movies</p>
+                    <div class="progress-percent">
+                        <span style="width: 95%;"></span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <p class="progress-name">Games</p>
+                    <div class="progress-percent">
+                        <span style="width: 90%;"></span>
+                    </div>
+                </div>
+                <div class="progress">
+                    <p class="progress-name">Series</p>
+                    <div class="progress-percent">
+                        <span style="width: 95%;"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- End Our Skills -->
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/bcf95508ed.js" crossorigin="anonymous"></script>
