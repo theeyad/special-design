@@ -1,13 +1,12 @@
 // Start Scroll To Top
 let scrollTop = document.querySelector(".scroll-top");
 
-window.addEventListener("scroll", () => {
-  if (scrollY >= 400) {
-    scrollTop.classList.add("appear");
-  } else {
-    scrollTop.classList.remove("appear");
-  }
-});
+function toggleScrollbtn() {
+  scrollTop.classList.toggle("appear", window.scrollY >= 400);
+}
+
+toggleScrollbtn();
+window.addEventListener("scroll", toggleScrollbtn);
 
 scrollTop.addEventListener("click", () => {
   window.scrollTo({
@@ -143,3 +142,67 @@ function changingBg() {
 
 changingBg();
 // End Making Landing Page BackgroundImage Change Every Five Seconds
+
+// Start Contet Section
+const section = document.querySelector(".progress-container");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      document
+        .querySelectorAll(".progress-container .progress span")
+        .forEach((span) => {
+          span.style.width = span.dataset.progress;
+        });
+    } else {
+      document
+        .querySelectorAll(".progress-container .progress span")
+        .forEach((span) => {
+          span.style.width = 0;
+        });
+    }
+  });
+});
+
+observer.observe(section);
+// End Contet Section
+
+// Start Just For U
+document.querySelectorAll(".imgs-box img").forEach((img) => {
+  img.addEventListener("click", (e) => {
+    let popupOverlay = document.createElement("div");
+    popupOverlay.className = "popup-overlay";
+
+    let popupBox = document.createElement("div");
+    popupBox.className = "popup-box";
+
+    let popupBoxHeader = document.createElement("h3");
+    popupBoxHeader.className = "popup-box-h";
+
+    img.alt.length !== 0
+      ? popupBoxHeader.append(document.createTextNode(img.alt))
+      : popupBoxHeader.append(document.createTextNode("Content Just For You!"));
+
+    let popupBoxImg = document.createElement("img");
+    popupBoxImg.className = "popup-box-img";
+    popupBoxImg.src = img.src;
+
+    let popupCloseBtn = document.createElement("div");
+    popupCloseBtn.className = "close-popup-btn fa-solid fa-x";
+
+    popupBox.append(popupBoxHeader, popupBoxImg, popupCloseBtn);
+
+    document.body.append(popupOverlay, popupBox);
+  });
+});
+
+document.addEventListener("click", (e) => {
+  const isCloseBtn = e.target.className === "close-popup-btn fa-solid fa-x";
+  const isOverlay = e.target.className === "popup-overlay";
+
+  if (isCloseBtn || isOverlay) {
+    document.querySelector(".popup-box")?.remove();
+    document.querySelector(".popup-overlay")?.remove();
+  }
+});
+// End Just For U

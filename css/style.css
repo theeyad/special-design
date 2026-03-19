@@ -28,13 +28,6 @@ body {
   margin: 0 auto;
 }
 
-.container:has(> section) {
-  background-image:
-    linear-gradient(rgba(94, 0, 6, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(155, 15, 6, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
 .agency-name {
   font-family: "Share Tech Mono", monospace;
   font-weight: 400;
@@ -54,7 +47,7 @@ section {
   right: -70px;
   width: 50px;
   height: 50px;
-  background-color: black;
+  background-color: #514e4d;
   border-radius: 50%;
   z-index: 9999;
   cursor: pointer;
@@ -75,7 +68,9 @@ section {
   position: fixed;
   top: 0;
   left: -250px;
-  background-color: white;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
   min-height: 100vh;
   width: 250px;
   z-index: 9999;
@@ -88,10 +83,13 @@ section {
 
 .setting-box .toggle-setting {
   position: absolute;
-  right: -30px;
+  right: -31px;
   top: 20%;
   transform: translateY(-20%);
-  background-color: white;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-left: 0;
   width: 30px;
   height: 30px;
   display: flex;
@@ -102,19 +100,26 @@ section {
   border-bottom-right-radius: 5px;
 }
 
+.setting-box .toggle-setting i {
+  color: white;
+}
+
 .setting-box .options {
   padding: 10px;
 }
 
 .setting-box .options > div {
   padding: 10px;
-  background-color: #eee;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
   border-radius: 8px;
   text-align: center;
 }
 
 .setting-box .options > div h4 {
   font-size: 1.2rem;
+  color: white;
 }
 
 .setting-box .colors-options .colors {
@@ -175,7 +180,7 @@ section {
 }
 
 .setting-box .random-bg-btns span {
-  background-color: rgb(38 166 154 / 60%);
+  background-color: rgb(31 31 31 / 50%);
   padding: 0.25em 0.5em;
   border-radius: 5px;
   color: white;
@@ -185,7 +190,7 @@ section {
 
 .setting-box .bg-options .random-bg-btns span:hover,
 .setting-box .bg-options .random-bg-btns span.active {
-  background-color: rgb(38 166 154 / 100%);
+  background-color: rgb(31 31 31);
 }
 /* End Settings Box */
 
@@ -279,6 +284,10 @@ section {
 
 /* Start About Section */
 .about {
+  background-color: black;
+}
+
+.about .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -297,16 +306,18 @@ section {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-top: 1em;
+  color: white;
 }
 
 .about .img-container {
   width: 350px;
   height: 350px;
-  background-color: rgb(0 0 0 / 30%);
+  background-color: #2a2928;
   border-radius: 8px;
   padding: 10px;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .about .img-container::before {
@@ -334,6 +345,10 @@ section {
 /* End About Section */
 
 /* Start Our Skills */
+.content {
+  background-color: #1d1c1a;
+}
+
 .content h2 {
   text-align: center;
   font-size: 4rem;
@@ -343,7 +358,7 @@ section {
 .content .progress-container {
   max-width: 1000px;
   margin: 0 auto;
-  background-color: white;
+  background-color: #303030;
   padding: 1.5em;
   display: flex;
   flex-direction: column;
@@ -361,6 +376,7 @@ section {
 .content .progress .progress-name {
   font-weight: 600;
   font-size: 1.25rem;
+  color: white;
 }
 
 .content .progress .progress-percent {
@@ -375,5 +391,100 @@ section {
   display: block;
   height: 100%;
   background-color: var(--main-color);
+  width: 0;
+  transition: 1.2s;
 }
 /* End Our Skills */
+
+/* Start Just For You */
+.for-you {
+  background-color: black;
+}
+
+.for-you h2 {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--main-color);
+}
+
+.for-you .imgs-box {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #303030;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-top: 2em;
+  border-radius: 8px;
+}
+
+.for-you img {
+  cursor: pointer;
+  border-radius: 5px;
+  transition: var(--main-trans);
+}
+
+.for-you img:hover {
+  transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  -o-transform: scale(1.01);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background-color: rgb(0 0 0 / 70%);
+}
+
+.popup-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 500px;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 12px;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.popup-box .popup-box-img {
+  border-radius: 5px;
+}
+
+.popup-box .popup-box-h {
+  font-size: 1.25rem;
+  color: var(--main-color);
+}
+
+.popup-box .close-popup-btn {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  color: white;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+/* End Just For You */
