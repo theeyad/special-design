@@ -17,12 +17,12 @@ scrollTop.addEventListener("click", () => {
 });
 // End Scroll To Top
 
-// changing Backgrounds
-let bgChange = true;
 // background interval
 let changing;
 
 // Start Local Storage
+
+// Colors Theme
 if (localStorage.getItem("colors")) {
   document.documentElement.style.setProperty(
     "--main-color",
@@ -38,15 +38,31 @@ if (localStorage.getItem("colors")) {
   });
 }
 
+// background Options
 if (localStorage.getItem("changingBg")) {
   localStorage.getItem("changingBg") === "apply"
-    ? (bgChange = true)
-    : (bgChange = false);
+    ? changingBg()
+    : clearInterval(changing);
 
   document.querySelectorAll(".random-bg-btns span").forEach((span) => {
     span.classList.remove("active");
 
     if (span.dataset.randomBgs === localStorage.getItem("changingBg")) {
+      span.classList.add("active");
+    }
+  });
+}
+
+// Nav Bullets
+if (localStorage.getItem("navBulletsShow")) {
+  localStorage.getItem("navBulletsShow") === "show"
+    ? (document.querySelector(".nav-bullets").style.display = "flex")
+    : (document.querySelector(".nav-bullets").style.display = "none");
+
+  document.querySelectorAll(".nav-bullets-btn span").forEach((span) => {
+    span.classList.remove("active");
+
+    if (span.dataset.display === localStorage.getItem("navBulletsShow")) {
       span.classList.add("active");
     }
   });
@@ -72,15 +88,19 @@ document.addEventListener("click", function (e) {
   }
 });
 
+function handleActive(event) {
+  event.target.parentElement.querySelectorAll(".active").forEach((ele) => {
+    ele.classList.remove("active");
+  });
+
+  event.target.classList.add("active");
+}
+
 //// active/unactive lis and setting color theme
 const colorsLi = document.querySelectorAll(".colors li");
 colorsLi.forEach((li) => {
   li.addEventListener("click", function (e) {
-    colorsLi.forEach((li) => {
-      li.classList.remove("active");
-    });
-
-    e.target.classList.add("active");
+    handleActive(e);
 
     document.documentElement.style.setProperty(
       "--main-color",
@@ -95,25 +115,52 @@ colorsLi.forEach((li) => {
 const randomBgSpans = document.querySelectorAll(".random-bg-btns span");
 randomBgSpans.forEach((span) => {
   span.addEventListener("click", function (e) {
-    randomBgSpans.forEach((span) => {
-      span.classList.remove("active");
-    });
-
-    e.target.classList.add("active");
+    handleActive(e);
 
     localStorage.setItem("changingBg", e.target.dataset.randomBgs);
 
     if (e.target.dataset.randomBgs === "apply") {
-      bgChange = true;
       changingBg();
     } else {
-      bgChange = false;
       clearInterval(changing);
     }
   });
 });
 
+//// active/unactive spans and controling nav bullets
+const navBulletsSpans = document.querySelectorAll(".nav-bullets-btn span");
+navBulletsSpans.forEach((span) => {
+  span.addEventListener("click", function (e) {
+    handleActive(e);
+
+    localStorage.setItem("navBulletsShow", e.target.dataset.display);
+
+    if (e.target.dataset.display === "show") {
+      document.querySelector(".nav-bullets").style.display = "flex";
+    } else {
+      document.querySelector(".nav-bullets").style.display = "none";
+    }
+  });
+});
+
+// reset options
+const resetBtn = document.querySelector(".reset-options .reset");
+resetBtn.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.reload();
+});
+
 // End Settings Box
+
+// Start Nav bullets
+document.querySelectorAll(".nav-bullets .bullet").forEach((bullet) => {
+  bullet.addEventListener("click", (e) => {
+    document.querySelector(`.${e.target.dataset.section}`).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
+// End Nav bullets
 
 // Start Making Landing Page BackgroundImage Change Every Five Seconds
 let landingPage = document.querySelector(".landing");
@@ -132,16 +179,11 @@ let imgsArr = [
 let landingNum = 0;
 
 function changingBg() {
-  clearInterval(changing);
-  if (bgChange === true) {
-    changing = setInterval(() => {
-      landingNum >= imgsArr.length - 1 ? (landingNum = 0) : landingNum++;
-      landingPage.style.backgroundImage = `url(./images/landing-img_${landingNum}.jpg)`;
-    }, 5000);
-  }
+  changing = setInterval(() => {
+    landingNum >= imgsArr.length - 1 ? (landingNum = 0) : landingNum++;
+    landingPage.style.backgroundImage = `url(./images/landing-img_${landingNum}.jpg)`;
+  }, 5000);
 }
-
-changingBg();
 // End Making Landing Page BackgroundImage Change Every Five Seconds
 
 // Start Contet Section
