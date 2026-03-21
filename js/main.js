@@ -126,6 +126,7 @@ let imgsArr = [
   "landing-img_4.jpg",
   "landing-img_5.jpg",
   "landing-img_6.jpg",
+  "landing-img_7.jpg",
 ];
 
 let landingNum = 0;
@@ -146,7 +147,7 @@ changingBg();
 // Start Contet Section
 const section = document.querySelector(".progress-container");
 
-const observer = new IntersectionObserver((entries) => {
+const contentObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       document
@@ -164,7 +165,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-observer.observe(section);
+contentObserver.observe(section);
 // End Contet Section
 
 // Start Just For U
@@ -206,3 +207,35 @@ document.addEventListener("click", (e) => {
   }
 });
 // End Just For U
+
+// Start Timeline
+const timelineSection = document.querySelector(".timeline");
+const lineFill = document.querySelector(".timeline .timeline-walks .filler");
+const timelineBox = document.querySelectorAll(".timeline .walk");
+
+window.addEventListener("scroll", () => {
+  const sectionTop = timelineSection.getBoundingClientRect().top;
+  const sectionHeight = timelineSection.offsetHeight;
+  const windowHeight = window.innerHeight;
+
+  // how far we've scrolled through the section (0 to 1)
+  const scrolled = (windowHeight - sectionTop) / (sectionHeight + windowHeight);
+  const percentage = Math.min(Math.max(scrolled * 100, 0), 100);
+
+  // fill the line
+  lineFill.style.height = `${percentage}%`;
+
+  // show/hide bullets and connectors based on fill position
+  timelineBox.forEach((box) => {
+    const boxRect = box.getBoundingClientRect();
+    const boxCenter = boxRect.top + boxRect.height / 2;
+    const fillBottom = lineFill.getBoundingClientRect().bottom;
+
+    if (fillBottom >= boxCenter) {
+      box.classList.add("activate");
+    } else {
+      box.classList.remove("activate");
+    }
+  });
+});
+// End Timeline

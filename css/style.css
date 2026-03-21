@@ -38,6 +38,12 @@ section {
   padding: 4em 0;
 }
 
+h2.head {
+  text-align: center;
+  font-size: 4rem;
+  color: var(--main-color);
+}
+
 .scroll-top {
   display: flex;
   justify-content: center;
@@ -164,7 +170,7 @@ section {
 }
 
 .setting-box .colors-options .colors li:nth-child(5) {
-  background-color: #91d06cbf;
+  background-color: #66cd29;
 }
 
 .setting-box .bg-options {
@@ -312,7 +318,7 @@ section {
 .about .img-container {
   width: 350px;
   height: 350px;
-  background-color: #2a2928;
+  background-color: rgb(255 255 255 / 10%);
   border-radius: 8px;
   padding: 10px;
   position: relative;
@@ -347,12 +353,6 @@ section {
 /* Start Our Skills */
 .content {
   background-color: #1d1c1a;
-}
-
-.content h2 {
-  text-align: center;
-  font-size: 4rem;
-  color: var(--main-color);
 }
 
 .content .progress-container {
@@ -399,12 +399,6 @@ section {
 /* Start Just For You */
 .for-you {
   background-color: black;
-}
-
-.for-you h2 {
-  text-align: center;
-  font-size: 4rem;
-  color: var(--main-color);
 }
 
 .for-you .imgs-box {
@@ -464,6 +458,7 @@ section {
 
 .popup-box .popup-box-img {
   border-radius: 5px;
+  max-height: 400px;
 }
 
 .popup-box .popup-box-h {
@@ -488,3 +483,236 @@ section {
   cursor: pointer;
 }
 /* End Just For You */
+
+/* Start Timeline */
+.timeline {
+  background-color: #1d1c1a;
+}
+
+.timeline .container {
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.timeline .container .timeline-walks {
+  content: "";
+  position: absolute;
+  width: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.timeline .container .timeline-walks .filler {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  background-color: var(--main-color);
+  transition: 0.1s;
+}
+
+.timeline .container .year {
+  position: relative;
+  margin: 0 auto;
+  background-color: var(--main-color);
+  padding: 0.5em;
+  border-radius: 5px;
+  font-size: 1.05rem;
+}
+
+.timeline .container .walk {
+  padding: 1em;
+  background-color: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 20%);
+  width: calc(50% - 70px);
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.timeline .container .walk::before {
+  content: "";
+  background-color: var(--main-color);
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid white;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: var(--main-trans);
+}
+
+.timeline .container .walk.activate::before {
+  transform: translateY(-50%) scale(1);
+}
+
+.timeline .container .walk.left::before {
+  right: -86px;
+}
+
+.timeline .container .walk.right::before {
+  left: -86px;
+}
+
+.timeline .container .walk::after {
+  content: "";
+  background-color: var(--main-color);
+  height: 3px;
+  width: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: var(--main-trans);
+  z-index: -1;
+}
+
+.timeline .container .walk.activate::after {
+  width: 66px;
+}
+
+.timeline .container .walk.left::after {
+  right: -67px;
+}
+
+.timeline .container .walk.right::after {
+  left: -67px;
+}
+
+.timeline .container .left {
+  align-self: flex-start;
+}
+
+.timeline .container .right {
+  align-self: flex-end;
+}
+
+.timeline .container .walk h3 {
+  font-size: 1.3rem;
+}
+
+.timeline .container .walk .desc {
+  line-height: 1.8;
+  margin-top: 0.75em;
+  color: #c2c2c2;
+}
+/* End Timeline */
+
+/* Start Features */
+.features {
+  background-color: black;
+}
+
+.features .feats {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2em;
+  margin-top: 3em;
+}
+
+.features .feat-box {
+  text-align: center;
+}
+.features .feat-box i {
+  color: var(--main-color);
+  font-size: 2rem;
+}
+.features .feat-box h3 {
+  margin-top: 1em;
+  font-size: 1.5rem;
+}
+.features .feat-box .desc {
+  margin-top: 0.5em;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+/* End Features */
+
+/* Start Testemonials */
+.testemonials {
+  position: relative;
+}
+
+.testemonials h2 {
+  text-align: center;
+  font-size: 4rem;
+  color: white;
+}
+
+.testemonials::before,
+.testemonials::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+}
+
+.testemonials::before {
+  left: 0;
+  background-color: var(--main-color);
+}
+
+.testemonials::after {
+  right: 0;
+  background-color: #1d1c1a;
+}
+
+.testemonials .tests {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  gap: 1.25em;
+  margin-top: 2.5em;
+}
+
+@media (max-width: 767.8px) {
+  .testemonials .tests {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testemonials .tests .test {
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  color: white;
+}
+
+.testemonials .tests .test > p {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.testemonials .tests .test .person-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+}
+
+.testemonials .test .person-info img {
+  width: 60px;
+  margin-top: 1em;
+  border-radius: 50%;
+}
+
+.testemonials .test .person-info .text-infos h5 {
+  font-size: 1.05rem;
+}
+
+.testemonials .test .person-info .text-infos p {
+  margin-top: 0.5em;
+}
+/* End Testemonials */
