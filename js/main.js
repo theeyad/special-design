@@ -162,6 +162,21 @@ document.querySelectorAll(".nav-bullets .bullet").forEach((bullet) => {
 });
 // End Nav bullets
 
+// Start header
+const menu = document.querySelector(".toggle-menu");
+const menunav = document.querySelector(".landing .header .navs");
+
+menu.addEventListener("click", function () {
+  this.classList.toggle("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!menu.contains(e.target) && e.target !== menunav) {
+    menu.classList.remove("open");
+  }
+});
+// End header
+
 // Start Making Landing Page BackgroundImage Change Every Five Seconds
 let landingPage = document.querySelector(".landing");
 
@@ -179,10 +194,15 @@ let imgsArr = [
 let landingNum = 0;
 
 function changingBg() {
+  clearInterval(changing);
   changing = setInterval(() => {
     landingNum >= imgsArr.length - 1 ? (landingNum = 0) : landingNum++;
     landingPage.style.backgroundImage = `url(./images/landing-img_${landingNum}.jpg)`;
   }, 5000);
+}
+// first visit to website
+if (!localStorage.getItem("changingBg")) {
+  changingBg();
 }
 // End Making Landing Page BackgroundImage Change Every Five Seconds
 
